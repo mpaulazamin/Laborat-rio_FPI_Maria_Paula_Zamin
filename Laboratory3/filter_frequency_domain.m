@@ -1,6 +1,6 @@
 % Aluna: Maria Paula Zamin
-% INF01046 - Laboratório 3
-% Filtragem no domínio frequência
+% INF01046 - LaboratÃ³rio 3
+% Filtragem no domÃ­nio frequÃªncia
 
 function filter_frequency_domain(kernel)
 %
