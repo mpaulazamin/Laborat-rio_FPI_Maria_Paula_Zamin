@@ -1,4 +1,4 @@
-function upscaling(image, factor_row, factor_column)
+function downscaling(image, factor_row, factor_column)
 
 img = imread(image);
 [rows, columns, depth] = size(img);
@@ -6,8 +6,8 @@ img = imread(image);
 new_rows = round(rows * factor_row);
 new_columns = round(columns * factor_column);
 
-add_rows = round((new_rows - rows) / 2) ;
-add_columns = round((new_columns - columns) / 2);
+sub_rows = round((rows - new_rows) / 2) ;
+sub_columns = round((columns - new_columns) / 2);
 
 if (depth == 1)
     
@@ -26,7 +26,7 @@ if (depth == 1)
     imshow(log(abs(img_ft_shifted)), [3, 10]);
     title('Shifted Spectrum');
     
-    padded_img_ft_shifted = padarray(img_ft_shifted, [add_rows, add_columns]);
+    padded_img_ft_shifted = img_ft_shifted(sub_rows+1:end-sub_rows, sub_columns+1:end-sub_columns);
     figure;
     subplot(1, 3, 1)
     imshow(log(abs(padded_img_ft_shifted)), [3, 10]);
@@ -42,7 +42,7 @@ if (depth == 1)
     imshow(uint8(padded_img_ft_unshifted_inverse));
     title(['Upscaled image - ', num2str(factor_row), 'x', num2str(factor_column)]);
     
-    imwrite(uint8(padded_img_ft_unshifted_inverse), 'upscaled_image_gray.jpg')
+    imwrite(uint8(padded_img_ft_unshifted_inverse), 'downscaled_image_gray.jpg')
     imwrite(uint8(img), 'image_gray.jpg')
 end
     
@@ -60,9 +60,9 @@ if (depth == 3)
     img_ft_shifted_green = fftshift(img_ft_green);
     img_ft_shifted_blue = fftshift(img_ft_blue);
 
-    padded_img_ft_shifted_red = padarray(img_ft_shifted_red, [add_rows, add_columns]);
-    padded_img_ft_shifted_green = padarray(img_ft_shifted_green, [add_rows, add_columns]);
-    padded_img_ft_shifted_blue = padarray(img_ft_shifted_blue, [add_rows, add_columns]);
+    padded_img_ft_shifted_red = img_ft_shifted_red(sub_rows+1:end-sub_rows, sub_columns+1:end-sub_columns);
+    padded_img_ft_shifted_green = img_ft_shifted_green(sub_rows+1:end-sub_rows, sub_columns+1:end-sub_columns);
+    padded_img_ft_shifted_blue = img_ft_shifted_blue(sub_rows+1:end-sub_rows, sub_columns+1:end-sub_columns);
 
     padded_img_ft_unshifted_red = fftshift(padded_img_ft_shifted_red);
     padded_img_ft_unshifted_green = fftshift(padded_img_ft_shifted_green);
@@ -73,9 +73,8 @@ if (depth == 3)
     padded_img_ft_unshifted_inverse_blue = ifft2(padded_img_ft_unshifted_blue * factor_row * factor_column);  
     
     recombinedImage = cat(3, padded_img_ft_unshifted_inverse_red, padded_img_ft_unshifted_inverse_green, padded_img_ft_unshifted_inverse_blue);
-    imwrite(uint8(recombinedImage), 'upscaled_image_rbg.jpg')
+    imwrite(uint8(recombinedImage), 'downscaled_image_rbg.jpg')
     imwrite(uint8(img), 'image_rbg.jpg')
-    
 end
 
 end
