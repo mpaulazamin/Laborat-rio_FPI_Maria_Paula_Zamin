@@ -9,11 +9,11 @@ f = cos(2 * pi * ((u * x / N) + (v * y / M)));
 figure;
 subplot(1, 2, 1)
 imshow(uint8(128*(f) + 128));
-title(['f(t) = cos(2 * pi * ((u * x / N) + (v * y / M))), u = ', num2str(u), ' , v = ', num2str(v) ,' , M = ', num2str(M), ' , N = ', num2str(N)]);
+title(['f(t) = cos(2 * pi * ((u * x / N) + (v * y / M))), u = ', num2str(u), ', v = ', num2str(v) ,', M = ', num2str(M), ', N = ', num2str(N)]);
 
-g = cos(2 * pi * (((N - u) * x / N) + ((N - v) * y / M)));
+g = cos(2 * pi * (((N - u) * x / N) + ((M - v) * y / M)));
 subplot(1, 2, 2)
 imshow(uint8(128*(g) + 128));
-title(['g(t) = cos(2 * pi * (((N - u) * x / N) + ((N - v) * y / M))), u = ', num2str(u), ' , v = ', num2str(v) ,' , M = ', num2str(M), ' , N = ', num2str(N)]);
+title(['g(t) = cos(2 * pi * (((N - u) * x / N) + ((M - v) * y / M))), u = ', num2str(u), ', v = ', num2str(v) ,', M = ', num2str(M), ', N = ', num2str(N)]);
 
 end

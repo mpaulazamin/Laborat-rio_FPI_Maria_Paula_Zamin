@@ -9,14 +9,11 @@ t = 0 : 1 : N - 1;
 
 f = cos(u * (2 * pi / N) * t);
 figure;
-subplot(121), plot(t, f);
-title(['f(t) = cos(u * (2 * pi / N) * t, u = ', num2str(u), ' ,N = ', num2str(N)]);
+subplot(121), plot(t / 200, f);
+title(['f(t) = cos(u * (2 * pi / N) * t, u = ', num2str(u), ', N = ', num2str(N)]);
 
 g = cos((N - u) * (2 * pi / N) * t);
-subplot(122) ,plot(t, g);
-title(['f(t) = cos((N - u) * (2 * pi / N) * t, u = ', num2str(u), ' ,N = ', num2str(N)]);
-
-figure;
-
+subplot(122) ,plot(t / 200, g);
+title(['g(t) = cos((N - u) * (2 * pi / N) * t, u = ', num2str(u), ', N = ', num2str(N)]);
 
 end
