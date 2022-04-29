@@ -19,7 +19,7 @@ imshow(log(abs(img_ft_shifted)), []);
 title('Shifted spectrum');
 
 % Rotate image
-img_rotated = imrotate(img, 45, 'bilinear', 'crop'); 
+img_rotated = imrotate(img, -30, 'bilinear', 'crop'); 
 img_ft_rotated = fft2(img_rotated);
 img_ft_rotated_shifted = fftshift(img_ft_rotated);
 

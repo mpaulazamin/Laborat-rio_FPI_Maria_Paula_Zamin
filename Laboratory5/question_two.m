@@ -1,11 +1,11 @@
-function question_two(filename1, filename2)
+function question_two()
 
 % img1 = bw_vertical
 % img2 = bw_horizontal
 
 % Read images
-img1 = imread(filename1);
-img2 = imread(filename2);
+img1 = imread('bw_vertical.bmp');
+img2 = imread('bw_horizontal.bmp');
 
 % Showing impulse function:
 figure;

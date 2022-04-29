@@ -22,7 +22,7 @@ subplot(2, 3, 3)
 imshow(log(abs(img_ft_shifted)), []);
 title('Shifted spectrum');
 
-b = 100;
+b = 50;
 img_brightness = img_ft;
 img_brightness(img_brightness == img_ft(1)) = img_ft(1) + b * M * N;
 
@@ -54,7 +54,7 @@ subplot(2, 3, 3)
 imshow(log(abs(img_ft_shifted)), []);
 title('Shifted spectrum');
 
-s = 0.5;
+s = 2;
 img_contrast = img_ft * s;
 
 subplot(2, 3, 4)

@@ -1,16 +1,16 @@
-function question_one(filename1, filename2)
+function question_one()
 
 % img1 = delta function
 % img2 = constant function
 
 % Read images
-img1 = imread(filename1);
-img2 = imread(filename2);
+img1 = imread('bw_delta_origin.bmp');
+img2 = imread('bw_white_sqr.bmp');
 
 % Showing impulse function:
 figure;
 subplot(1, 2, 1)
-imshow(img1);
+imshow(fftshift(img1));
 title('Original image - delta funcion');
 
 img_ft1 = fft2(img1);
@@ -64,7 +64,7 @@ imshow(uint8(img_ft2_recovered));
 title({'Recovered constant function with', 'ifftshift + inverse transform'});
 
 % Apply inverse transform directly to the original images
-img1_ifft = ifft2(img1);
+img1_ifft = ifft2(img1)
 img2_ifft = ifft2(img2);
 
 figure;
